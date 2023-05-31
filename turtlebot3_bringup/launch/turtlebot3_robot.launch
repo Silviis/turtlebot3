@@ -1,15 +1,15 @@
 <launch>
-  <arg name="multi_robot_name" default="tb3_0"/>
-  <arg name="set_lidar_frame_id" default="tb3_0/base_scan"/>
+  <arg name="multi_robot_name" default="tb3_2"/>
+  <arg name="set_lidar_frame_id" default="tb3_2/base_scan"/>
   <arg name="model" default="burger" doc="model type [burger, waffle, waffle_pi]"/>
 
-  <include ns="tb3_0" file="$(find turtlebot3_bringup)/launch/turtlebot3_core.launch">
+  <include ns="tb3_2" file="$(find turtlebot3_bringup)/launch/turtlebot3_core.launch">
     <arg name="multi_robot_name" value="$(arg multi_robot_name)"/>
   </include>
-  <include ns="tb3_0" file="$(find turtlebot3_bringup)/launch/turtlebot3_lidar.launch">
+  <include ns="tb3_2" file="$(find turtlebot3_bringup)/launch/turtlebot3_lidar.launch">
     <arg name="set_frame_id" value="$(arg set_lidar_frame_id)"/>
   </include>
-  <node ns="tb3_0" pkg="turtlebot3_bringup" type="turtlebot3_diagnostics" name="turtlebot3_diagnostics_red" output="screen"/>
+  <node ns="tb3_2" pkg="turtlebot3_bringup" type="turtlebot3_diagnostics" name="turtlebot3_diagnostics_green" output="screen"/>
 
   <group if = "$(eval model == 'waffle_pi')">
     <include file="$(find turtlebot3_bringup)/launch/turtlebot3_rpicamera.launch"/>
