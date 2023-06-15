@@ -1,6 +1,7 @@
 <launch>
-  <arg name="set_frame_id" default="base_scan"/>
   <arg name="robot_color" default=""/>
+  <arg name="multi_robot_name" default=""/>
+  <arg name="set_frame_id" default="$(eval multi_robot_name + '/base_scan')"/>
   <arg name="lds_model" default="LDS-01" doc="LDS MODEL [LDS-01, LDS-02]"/>
 
   <group if = "$(eval lds_model == 'LDS-01')">
