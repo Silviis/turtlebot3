@@ -26,6 +26,7 @@ from launch_ros.actions import Node
 
 
 def generate_launch_description():
+    TURTLEBOT3_NAME = os.environ['TURTLEBOT3_NAME']
     TURTLEBOT3_MODEL = os.environ['TURTLEBOT3_MODEL']
 
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
@@ -55,6 +56,7 @@ def generate_launch_description():
         Node(
             package='robot_state_publisher',
             executable='robot_state_publisher',
+            namespace=TURTLEBOT3_NAME,
             output='screen',
             parameters=[rsp_params, {'use_sim_time': use_sim_time}])
     ])
